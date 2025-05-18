@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Dark mode transition */
+.dark-mode-transition {
+  @apply transition-colors duration-300;
+}
+
+/* 3D Transform Styles */
+.perspective-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.transform-3d {
+  transform: translateZ(0) rotateX(0);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transform-3d.scrolled {
+  transform: translateZ(50px) rotateX(10deg);
+}
+
+/* Fade in animation for sections */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px) translateZ(0);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0) translateZ(50px);
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px) translateZ(0);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stagger-children.is-visible > * {
+  opacity: 1;
+  transform: translateY(0) translateZ(30px);
+}
+
+.stagger-children.is-visible > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-children.is-visible > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-children.is-visible > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-children.is-visible > *:nth-child(4) { transition-delay: 0.4s; }
+.stagger-children.is-visible > *:nth-child(5) { transition-delay: 0.5s; }
+.stagger-children.is-visible > *:nth-child(6) { transition-delay: 0.6s; }
